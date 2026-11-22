@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#101114" />
+  <title>CHECKMATE // Last Piece Standing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Checkmate home"><span class="brand-mark">♞</span><span>CHECK<span class="brand-accent">MATE</span></span><i>TACTICAL DIVISION</i></a>
+      <div class="top-center"><span class="live-dot"></span> SECTOR 04 <b>/</b> THE CHROMA YARD</div>
+      <div class="top-right"><span class="rank-icon">✦</span> ROOKIE <span class="top-divider"></span><span class="sound-toggle" id="soundToggle" title="Toggle sound">♫ <small>SOUND ON</small></span></div>
+    </header>
+
+    <section class="game-layout">
+      <aside class="rail">
+        <div class="rail-label">YOUR OPERATIVE</div>
+        <div class="operator-card">
+          <div class="operator-art" id="operatorArt"><span class="art-glow"></span><span class="art-piece" id="artPiece">♕</span><span class="art-crosshair">+</span><span class="art-label">FIELD<br>READY</span></div>
+          <div class="operator-meta"><span class="eyebrow" id="operatorClass">CLASS 02 / ASSAULT</span><h2 id="operatorName">THE QUEEN</h2><p id="operatorQuote">“Own every angle.”</p></div>
+          <div class="stats">
+            <div class="stat-row"><span>VITALITY</span><div class="stat-track"><i id="statHealth" style="width:75%"></i></div><b id="statHealthText">75</b></div>
+            <div class="stat-row"><span>FIRE RATE</span><div class="stat-track"><i id="statRate" style="width:78%"></i></div><b id="statRateText">78</b></div>
+            <div class="stat-row"><span>MOBILITY</span><div class="stat-track"><i id="statMobility" style="width:85%"></i></div><b id="statMobilityText">85</b></div>
+          </div>
+          <div class="loadout"><div class="loadout-icon" id="weaponIcon">⌁</div><div><span>SIGNATURE WEAPON</span><strong id="weaponName">CROWN / AR</strong></div><span class="ammo-type">5.56</span></div>
+        </div>
+
+        <div class="roster-head"><span>CHOOSE YOUR PIECE</span><span>01 — 05</span></div>
+        <div class="roster" id="roster" role="group" aria-label="Choose chess operative"></div>
+        <div class="intel"><span class="intel-icon">◈</span><p><b>FIELD INTEL</b><br>Enemy pieces are pushing in waves. Hold the yard. Leave no king standing.</p></div>
+      </aside>
+
+      <section class="arena-column">
+        <div class="arena-topline"><div><span class="eyebrow">LIVE COMBAT SIMULATION</span><h1>THE CHROMA <em>YARD</em></h1></div><div class="arena-coords">34° 02' N<br>118° 14' W</div></div>
+        <div class="arena-frame" id="arenaFrame">
+          <canvas id="game" aria-label="Top-down chess shooter arena"></canvas>
+          <div class="scanlines"></div>
+          <div class="map-corners"><i></i><i></i><i></i><i></i></div>
+          <div class="arena-status" id="arenaStatus"><span class="status-pip"></span><span id="statusText">AWAITING DEPLOYMENT</span><b id="waveText">— / 05</b></div>
+          <div class="crosshair-hint" id="crosshairHint">MOUSE TO AIM <span>·</span> CLICK TO FIRE</div>
+          <div class="overlay" id="startOverlay">
+            <div class="overlay-card">
+              <div class="overlay-kicker"><span>✦</span> OPERATION: CHECKMATE</div>
+              <h2>ONE BOARD.<br><em>NO MERCY.</em></h2>
+              <p>Five enemy waves. One colorful kill zone.<br>Choose your piece and take the yard.</p>
+              <button class="deploy-btn" id="startButton"><span>DEPLOY OPERATIVE</span><b>↗</b></button>
+              <div class="overlay-note">WASD MOVE <span>·</span> MOUSE AIM <span>·</span> SPACE DASH</div>
+            </div>
+            <div class="overlay-stamp">CLASSIFIED<br>COMBAT ZONE 04</div>
+          </div>
+          <div class="result-overlay hidden" id="resultOverlay"><div class="result-content"><span class="result-kicker" id="resultKicker">MISSION COMPLETE</span><h2 id="resultTitle">YARD<br>SECURED.</h2><p id="resultCopy">The board is yours.</p><button class="deploy-btn" id="replayButton"><span>RUN IT BACK</span><b>↻</b></button></div></div>
+          <div class="touch-controls" id="touchControls">
+            <div class="touch-pad" id="touchPad"><span class="pad-ring"></span><span class="pad-knob" id="padKnob"></span><small>MOVE</small></div>
+            <button class="touch-action dash-touch" id="dashTouch">DASH<span>SPACE</span></button>
+            <button class="touch-action fire-touch" id="fireTouch"><span>✳</span> FIRE</button>
+          </div>
+          <div class="mobile-aim" id="mobileAim">DRAG ANYWHERE TO AIM</div>
+        </div>
+        <div class="arena-footer"><span><i class="footer-dot"></i> SIMULATION ONLINE</span><span>MAP ROTATION <b>CHROMA / 04</b></span><span>VER. 2.4.0 <b>© CHECKMATE</b></span></div>
+      </section>
+
+      <aside class="right-rail">
+        <div class="intel-title"><span>MISSION BRIEF</span><span class="brief-mark">◈</span></div>
+        <div class="mission-card"><div class="mission-number">01 <span>/ 05</span></div><h3>LAST PIECE<br>STANDING</h3><p>Clear the incoming enemy squads. Each wave hits harder. Your piece, your rules.</p><div class="mission-objective"><span>OBJECTIVE</span><b><i>◇</i> ELIMINATE ALL HOSTILES</b></div></div>
+        <div class="combat-log-head"><span>COMBAT LOG</span><span class="log-live"><i></i> LIVE</span></div>
+        <div class="combat-log" id="combatLog"><div class="log-entry dim"><time>00:00</time><span>Awaiting operative deployment...</span></div></div>
+        <div class="key-guide"><div class="guide-title">FIELD CONTROLS</div><div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>MOVE</span></div><div><kbd>SPACE</kbd><span>DASH / DODGE</span></div><div><kbd>R</kbd><span>RELOAD</span></div><div><kbd>CLICK</kbd><span>FIRE WEAPON</span></div></div>
+        <div class="danger-note"><span>!</span><p><b>COMBAT WARNING</b><br>Friendly fire is disabled.<br>Stay on the move.</p></div>
+      </aside>
+    </section>
+    <footer class="page-footer"><span>CHECKMATE TACTICAL DIVISION <b>—</b> TRAINING SIMULATION</span><span>ALL PIECES ARE EXPENDABLE <b>✦</b></span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
